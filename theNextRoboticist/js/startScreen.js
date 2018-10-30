@@ -25,7 +25,8 @@ startState.prototype.update = function(){
 // If the button is pressed, the introduction video plays.
 
 function pressedMe() {
-	let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
+	/*let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
 	let text = newGame.add.text(0, 0, "phaser 2.4 text bounds", style);
-	//newGame.state.start("IntroScene01");
+	*/
+	newGame.state.start("introScene");
 }

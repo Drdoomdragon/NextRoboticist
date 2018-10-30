@@ -9,6 +9,7 @@
 	<!--initiate scripts -->
 	<script type="text/javascript" src = "js/phaser.min.js"></script>
 	<script type="text/javascript" src = "js/startScreen.js"></script>
+	<script type="text/javascript" src ="js/robotIntro.js"></script>
 
 	<style type="text/css">
 		body {
@@ -25,7 +26,8 @@
 	let newGame = new Phaser.Game(1920, 1080, Phaser.AUTO);
 
 	newGame.state.add ("Start", startState);
-
+	newGame.state.add ("introScene", introState);
+	
 	newGame.state.start("Start");
 </script>
 
