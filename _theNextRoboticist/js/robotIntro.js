@@ -2,18 +2,17 @@ let introState = function() {}
 
 introState.prototype.preload= function() {
 
-    //newGame.load.video('introductory_video', 'assets/video/chant.mp4');
+    newGame.load.video('introductory_video', 'assets/video/chant.mp4');
     newGame.load.image('skip', 'assets/image/next.png');
 
 }
 
+var introVideo;
+
 introState.prototype.create =function() {
-	let skipButton = newGame.add.button (0,0, 'skip', pressedMe2);
-   /* let introVideo = newGame.add.video('introductory_video');
-    introVideo.play(false);
-    if (introVideo.complete(true))
-    	{	//introVideo.removeVideoElement();
-    		pressedMe2()};*/
+    introVideo = newGame.add.video('introductory_video');
+	let skipButton = newGame.add.button (0,500, 'skip', pressedMe2);
+	introVideo.play(false);
 
 }
 
@@ -23,7 +22,8 @@ introState.prototype.update = function(){
     }
 
 function pressedMe2() {
-	let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
-	let text = newGame.add.text(0, 300, "phaser 2.4 text bounds", style);
-	
+	/*let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
+	let text = newGame.add.text(0, 700, "phaser 2.4 text bounds", style);*/
+	introVideo.stop();
+	newGame.state.start("pickProblem");
 }
