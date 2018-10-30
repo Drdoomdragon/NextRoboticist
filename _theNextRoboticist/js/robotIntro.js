@@ -11,7 +11,8 @@ var introVideo;
 
 introState.prototype.create =function() {
     introVideo = newGame.add.video('introductory_video');
-	let skipButton = newGame.add.button (0,500, 'skip', pressedMe2);
+	let skipButton = newGame.add.button (0,600, 'skip', pressedMe2);
+	introVideo.addToWorld(0,0,0,0,0.5,0.5);
 	introVideo.play(false);
 
 }

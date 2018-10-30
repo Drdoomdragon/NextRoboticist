@@ -10,10 +10,17 @@ problemState.prototype.preload= function() {
 
 }
 
+// global variables
 var artButton
+var backOption
+var selectOption
+var text
+var style
+
 
 problemState.prototype.create =function() {
-	artButton = newGame.add.button (0, 200, 'artOption', artPicked);
+    style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
+    artButton = newGame.add.button (0, 200, 'artOption', artPicked);
 
 /*	let playButton = newGame.add.button (300,200, 'playOption', problemState.buttonPressed);
 
@@ -26,14 +33,24 @@ problemState.prototype.update = function(){
 
     }
 
-function displayOptions(){
-    let backOption = newGame.add.button (0,400, 'backButton');
-    let selectOption = newGame.add.button (500,400, 'selectButton');
+// this is the main menu screen.
+function mainScreen (){
+    text.destroy();
+    backOption.destroy();
+    selectOption.destroy();
+
+    artButton = newGame.add.button (0, 200, 'artOption', artPicked);
 }
 
+//this gives the option for player to select challenge or select a new one.
+function displayOptions(){
+    backOption = newGame.add.button (0,400, 'backButton', mainScreen);
+    selectOption = newGame.add.button (500,400, 'selectButton');
+}
+
+//gives details on the art problem challenge
 function artPicked(){
-    let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
-    let text = newGame.add.text(0, 0, "phaser 2.4 text bounds", style);  
+    text = newGame.add.text(0, 0, "you chose art!", style);  
     artButton.destroy();
     displayOptions(); 
 }
