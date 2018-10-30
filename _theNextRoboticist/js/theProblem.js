@@ -18,10 +18,12 @@ var backOption
 var selectOption
 
 var text
+var scoreText
 var style
 
 
 problemState.prototype.create =function() {
+    problemDecision = 0;
     style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
     text = newGame.add.text(0, 0, "Choose your problem!", style);  
     artButton = newGame.add.button (0, 200, 'artOption', artPicked);
@@ -37,7 +39,9 @@ problemState.prototype.update = function(){
 
 // this is the main menu screen.
 function mainScreen (){
+    problemDecision = 0;
     text.destroy();
+    scoreText.destroy();
     backOption.destroy();
     selectOption.destroy();
 
@@ -54,12 +58,15 @@ function displayOptions(){
     sportsButton.destroy();
     backOption = newGame.add.button (0,400, 'backButton', mainScreen);
     selectOption = newGame.add.button (500,400, 'selectButton');
+    
+    scoreText = newGame.add.text (0,100, problemDecision, style);
 }
 
 //gives details on the art problem challenge
 function artPicked(){
     text.destroy();
     text = newGame.add.text(0, 0, "you chose art!", style);  
+    problemDecision = 1;
     displayOptions(); 
 }
 
@@ -67,6 +74,7 @@ function artPicked(){
 function playPicked(){
     text.destroy();
     text = newGame.add.text(0, 0, "you chose play!", style);  
+    problemDecision = 2;
     displayOptions(); 
 }
 
@@ -74,5 +82,6 @@ function playPicked(){
 function sportsPicked(){
     text.destroy();
     text = newGame.add.text(0, 0, "you chose sports!", style);  
+    problemDecision = 3;
     displayOptions(); 
 }

@@ -25,6 +25,11 @@
 
 <script type ="text/javascript">
 	let newGame = new Phaser.Game(1920, 1080, Phaser.AUTO);
+	newGame.config ={
+		data: {
+			problemDecision: 0,
+		}
+	}
 
 	newGame.state.add ("Start", startState);
 	newGame.state.add ("introScene", introState);
