@@ -1,0 +1,36 @@
+{"frames": {
+
+"wheel_001.png":
+{
+	"frame": {"x":0,"y":0,"w":300,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":100},
+	"sourceSize": {"w":300,"h":100}
+},
+"wheel_002.png":
+{
+	"frame": {"x":300,"y":0,"w":300,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":100},
+	"sourceSize": {"w":300,"h":100}
+},
+"wheel_003.png":
+{
+	"frame": {"x":600,"y":0,"w":300,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":100},
+	"sourceSize": {"w":300,"h":100}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "wheels.png",
+	"format": "RGBA8888",
+	"size": {"w":900,"h":100},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b8be655433b5a1822b915e8c014f3d3c:8a157617bd1c6eb111cf59fa31c457a5:62bf845b4be4aaae0569bb879daf3add$"
+}
+}

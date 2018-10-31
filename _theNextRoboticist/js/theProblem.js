@@ -57,11 +57,14 @@ function displayOptions(){
     playButton.destroy();
     sportsButton.destroy();
     backOption = newGame.add.button (0,400, 'backButton', mainScreen);
-    selectOption = newGame.add.button (500,400, 'selectButton');
+    selectOption = newGame.add.button (500,400, 'selectButton', selectProblem);
     
     scoreText = newGame.add.text (0,100, problemDecision, style);
 }
 
+function selectProblem (){
+    newGame.state.start ("playSubVideo");
+}
 //gives details on the art problem challenge
 function artPicked(){
     text.destroy();
