@@ -26,7 +26,6 @@ var invisiWheel;
 //groups
 var robotGroup;
 var mainTextGroup;
-var invisiButtonGroup;
 
 //general buttons.
 var confirm; // confirm selection
@@ -36,10 +35,6 @@ var textTitle;
 var mainInstructionsText;
 
 subsystemState.prototype.create =function(){
-	/*headOptionA = newGame.add.sprite(0,0, 'head',1);
-	headOptionB = newGame.add.sprite(0,100, 'head', 2);
-	headOptionC = newGame.add.sprite(0,200, 'head', 3);
-	headOptionNull = newGame.add.sprite(0,300, 'head', 0);*/
 	style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
 	
 	mainTextGroup = newGame.add.group();
@@ -66,14 +61,10 @@ subsystemState.prototype.create =function(){
 	robotGroup.add (chosenWheel);
 
 //creating invisible buttons.
-	invisiButtonGroup = newGame.add.group();
 
 	invisiHead = newGame.add.button(250,100, 'invisiHeadButton', chooseHead);
 	invisiHead.alpha =0;
 	invisiWheel = newGame.add.button();
-
-	invisiButtonGroup.add(invisiHead);
-	invisiButtonGroup.add(invisiWheel);
 //confirm button available in case selection is wanted
 	confirm = newGame.add.button(0,0, 'confirmButton').alignTo(chosenWheel, Phaser.BOTTOM_CENTER, 0, 50);
 
@@ -96,6 +87,20 @@ function clearScreen_subsystem(){
 
 }
 
+function showRobotDesignMenu(){
+	//making home screen contents reappear
+	robotGroup.alpha = 1;
+	mainTextGroup.alpha = 1;
+	confirm.alpha = 1;
+
+	//enabling homescreen buttons.
+	invisiHead.inputEnabled = true;
+	confirm.inputEnabled = true;
+}
+
+/* below are the different functions for each leg part.
+	chooseHead - chooses the heads
+	chooseLeg - chooses the leg. */
 function chooseHead(){
 	//clears screen
 	clearScreen_subsystem();
@@ -103,6 +108,7 @@ function chooseHead(){
 
 	//gives instructions
 	let chooseHeadInstructions = newGame.add.text(0,0, 'congrats', style);
+	chooseHeadInstructions.alpha = 1;
 
 	//displays images of the heads types.
 	headOptionA = newGame.add.sprite(0,50, 'head',1);
@@ -114,36 +120,79 @@ function chooseHead(){
 	    most likely images. */
 
 	// buttons to make head selections.
-	/*let invisiHeadOptionA = newGame.add.button(0,50, 'invisiHeadButton', chooseHeadA);
+	let invisiHeadOptionA = newGame.add.button(0,50, 'invisiHeadButton', chooseHeadA);
 	invisiHeadOptionA.alpha =0;
 
 	let invisiHeadOptionB = newGame.add.button(0,0, 'invisiHeadButton', chooseHeadB).alignTo(invisiHeadOptionA, Phaser.BOTTOM_CENTER, 0,10);
 	invisiHeadOptionB.alpha =0;
 
 	let invisiHeadOptionC = newGame.add.button(0,0, 'invisiHeadButton', chooseHeadC).alignTo(invisiHeadOptionB, Phaser.BOTTOM_CENTER, 0,10);
-	invisiHeadOptionC.alpha =0;*/
+	invisiHeadOptionC.alpha =0;
 
 	// functions assigning head options.
 	function chooseHeadA (){
 		headDecision = 1;
-		newGame.world.removeAll();
-		chosenHead = newGame.add.sprite(250,100, 'head',1);
+
+		robotGroup.replace(chosenHead,headOptionA);
+		robotGroup.resetChild(headOptionA, 250,100);
+
+		clearChooseHeadMenu();
+
+		//reassign chosenhead and make the head visible.
+		chosenHead = headOptionA;
+		headOptionA.alpha = 1;
+
+		//return to menu
+		showRobotDesignMenu();
 	}
 
 	function chooseHeadB (){
-		headDecision = 1;
-		newGame.world.removeAll();
-		chosenHead = newGame.add.sprite(250,100, 'head',2);
+		headDecision = 2;
+
+		robotGroup.replace(chosenHead, headOptionB);
+		robotGroup.resetChild(headOptionB, 250, 100);
+
+		clearChooseHeadMenu();
+
+		//reassign chosenhead and make the head visible.
+		chosenHead = headOptionB;
+		headOptionB.alpha = 1;
+
+		//return to menu
+		showRobotDesignMenu();
 	}
 
 	function chooseHeadC (){
-		headDecision = 1;
-		newGame.world.removeAll();
-		chosenHead = newGame.add.sprite(250,100, 'head',3);
+		headDecision = 3;
+
+		robotGroup.replace(chosenHead, headOptionC);
+		robotGroup.resetChild(headOptionC, 250, 100);
+
+		clearChooseHeadMenu();
+
+		//reassign chosenhead and make the head visible.
+		chosenHead = headOptionC;
+		headOptionC.alpha = 1;
+
+		//return to menu
+		showRobotDesignMenu();
+	}
+
+	function clearChooseHeadMenu (){
+		// hide headoptions
+		headOptionA.alpha = 0;
+		headOptionB.alpha = 0;	
+		headOptionC.alpha = 0;
+
+		chooseHeadInstructions.alpha = 0;
+
+		invisiHeadOptionA.inputEnabled = false;
+		invisiHeadOptionB.inputEnabled = false;
+		invisiHeadOptionC.inputEnabled = false;
 	}
 }
 
 function chooseLeg(){
-	newGame.world.removeAll();
 	let chooseLegsInstructions = newGame.add.text(0,0, 'congrats', style);
 }
+
