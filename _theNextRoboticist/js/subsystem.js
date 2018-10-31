@@ -19,7 +19,21 @@ var chosenArm_left;
 var chosenBody;
 var chosenWheel;
 
+//variables to act as invisible buttons
+var invisiHead;
+var invisiWheel;
+
+//groups
+var robotGroup;
+var mainTextGroup;
+var invisiButtonGroup;
+
+//general buttons.
+var confirm; // confirm selection
+
 var style;
+var textTitle;
+var mainInstructionsText;
 
 subsystemState.prototype.create =function(){
 	/*headOptionA = newGame.add.sprite(0,0, 'head',1);
@@ -27,23 +41,41 @@ subsystemState.prototype.create =function(){
 	headOptionC = newGame.add.sprite(0,200, 'head', 3);
 	headOptionNull = newGame.add.sprite(0,300, 'head', 0);*/
 	style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
-	let textTitle = newGame.add.text(0, 0, "Build Your Robot", style);
-	let mainInstructionsText = newGame.add.text(0,40, 'Instructions:', style);
+	
+	mainTextGroup = newGame.add.group();
+
+	textTitle = newGame.add.text(0, 0, "Build Your Robot", style);
+	mainInstructionsText = newGame.add.text(0,40, 'Instructions:', style);
+
+	mainTextGroup.add(textTitle);
+	mainTextGroup.add(mainInstructionsText);
 
 // MAKING THE ROBLOX CHARACTER
+	robotGroup = newGame.add.group();
+
 	chosenHead = newGame.add.sprite(250,100, 'head', 0);
 	chosenBody = newGame.add.sprite(0,0, 'body',0).alignTo(chosenHead, Phaser.BOTTOM_CENTER, 0, 10);
 	chosenArm_right = newGame.add.sprite(0,0, 'arm', 5).alignTo(chosenBody, Phaser.LEFT_CENTER, -10,0);
 	chosenArm_left = newGame.add.sprite(0,0, 'arm', 5).alignTo(chosenBody, Phaser.RIGHT_CENTER, 10, 0);
 	chosenWheel = newGame.add.sprite(0, 0, 'wheel', 0).alignTo(chosenBody, Phaser.BOTTOM_CENTER, 0,10);
 
-//creating invisible buttons.
-	let invisiHead = newGame.add.button(250,100, 'invisiHeadButton', chooseHead);
-	invisiHead.alpha =0;
-	let invisiWheel = newGame.add.button();
+	robotGroup.add (chosenHead);
+	robotGroup.add (chosenBody);
+	robotGroup.add (chosenArm_right);
+	robotGroup.add (chosenArm_left);
+	robotGroup.add (chosenWheel);
 
+//creating invisible buttons.
+	invisiButtonGroup = newGame.add.group();
+
+	invisiHead = newGame.add.button(250,100, 'invisiHeadButton', chooseHead);
+	invisiHead.alpha =0;
+	invisiWheel = newGame.add.button();
+
+	invisiButtonGroup.add(invisiHead);
+	invisiButtonGroup.add(invisiWheel);
 //confirm button available in case selection is wanted
-	let confirm = newGame.add.button(0,0, 'confirmButton').alignTo(chosenWheel, Phaser.BOTTOM_CENTER, 0, 50);
+	confirm = newGame.add.button(0,0, 'confirmButton').alignTo(chosenWheel, Phaser.BOTTOM_CENTER, 0, 50);
 
 
 }
@@ -53,12 +85,20 @@ subsystemState.prototype.update = function(){
 }
 
 function clearScreen_subsystem(){
-	newGame.world.removeAll();
+	//making home screen contents disappear
+	robotGroup.alpha = 0;
+	mainTextGroup.alpha = 0;
+	confirm.alpha = 0;
+
+	//disabling homescreen buttons.
+	invisiHead.inputEnabled = false;
+	confirm.inputEnabled = false;
+
 }
 
 function chooseHead(){
 	//clears screen
-	newGame.world.removeAll();
+	clearScreen_subsystem();
 	headDecision = 0;
 
 	//gives instructions
@@ -74,14 +114,14 @@ function chooseHead(){
 	    most likely images. */
 
 	// buttons to make head selections.
-	let invisiHeadOptionA = newGame.add.button(0,50, 'invisiHeadButton', chooseHeadA);
+	/*let invisiHeadOptionA = newGame.add.button(0,50, 'invisiHeadButton', chooseHeadA);
 	invisiHeadOptionA.alpha =0;
 
 	let invisiHeadOptionB = newGame.add.button(0,0, 'invisiHeadButton', chooseHeadB).alignTo(invisiHeadOptionA, Phaser.BOTTOM_CENTER, 0,10);
 	invisiHeadOptionB.alpha =0;
 
 	let invisiHeadOptionC = newGame.add.button(0,0, 'invisiHeadButton', chooseHeadC).alignTo(invisiHeadOptionB, Phaser.BOTTOM_CENTER, 0,10);
-	invisiHeadOptionC.alpha =0;
+	invisiHeadOptionC.alpha =0;*/
 
 	// functions assigning head options.
 	function chooseHeadA (){
