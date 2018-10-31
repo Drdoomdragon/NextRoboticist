@@ -1,6 +1,6 @@
 {"frames": {
 
-"body_001.png":
+"body_000.png":
 {
 	"frame": {"x":0,"y":0,"w":300,"h":300},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
 	"sourceSize": {"w":300,"h":300}
 },
-"body_002.png":
+"body_001.png":
 {
 	"frame": {"x":300,"y":0,"w":300,"h":300},
 	"rotated": false,
@@ -16,9 +16,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
 	"sourceSize": {"w":300,"h":300}
 },
-"body_003.png":
+"body_002.png":
 {
 	"frame": {"x":600,"y":0,"w":300,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
+	"sourceSize": {"w":300,"h":300}
+},
+"body_003.png":
+{
+	"frame": {"x":900,"y":0,"w":300,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
@@ -29,8 +37,8 @@
 	"version": "1.0",
 	"image": "bodies.png",
 	"format": "RGBA8888",
-	"size": {"w":900,"h":300},
+	"size": {"w":1200,"h":300},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c4def5ef8dee7ec9ee81503d871b8992:5885f292fb95fc215971c3b15fa11ad9:8476171d04e20c52824a9061ec89a77f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:130ad37b2ed67832ff7ea40f6a271392:d4b9b50c06d6c35903824a1938c15351:8476171d04e20c52824a9061ec89a77f$"
 }
 }

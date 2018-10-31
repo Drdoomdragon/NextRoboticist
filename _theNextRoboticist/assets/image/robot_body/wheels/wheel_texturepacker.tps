@@ -181,6 +181,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">wheel_000.png</key>
             <key type="filename">wheel_001.png</key>
             <key type="filename">wheel_002.png</key>
             <key type="filename">wheel_003.png</key>
@@ -193,6 +194,19 @@
                 <rect>75,25,150,50</rect>
                 <key>scale9Paddings</key>
                 <rect>75,25,150,50</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">wheels.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>225,25,450,50</rect>
+                <key>scale9Paddings</key>
+                <rect>225,25,450,50</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

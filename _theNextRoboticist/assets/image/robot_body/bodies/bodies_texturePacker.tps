@@ -181,19 +181,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">bodies.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>225,75,450,150</rect>
-                <key>scale9Paddings</key>
-                <rect>225,75,450,150</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
+            <key type="filename">body_000.png</key>
             <key type="filename">body_001.png</key>
             <key type="filename">body_002.png</key>
             <key type="filename">body_003.png</key>

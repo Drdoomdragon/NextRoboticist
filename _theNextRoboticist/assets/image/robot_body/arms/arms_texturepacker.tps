@@ -186,6 +186,7 @@
             <key type="filename">arm_003.png</key>
             <key type="filename">arm_004.png</key>
             <key type="filename">arm_005.png</key>
+            <key type="filename">arms_000.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -195,19 +196,6 @@
                 <rect>25,75,50,150</rect>
                 <key>scale9Paddings</key>
                 <rect>25,75,50,150</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">arms.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>25,375,50,750</rect>
-                <key>scale9Paddings</key>
-                <rect>25,375,50,750</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
