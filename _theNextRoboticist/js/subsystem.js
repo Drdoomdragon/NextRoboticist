@@ -17,19 +17,21 @@ var chosenArm_left;
 var chosenBody;
 var chosenWheel;
 
+var style;
+
 subsystemState.prototype.create =function(){
 	/*headOptionA = newGame.add.sprite(0,0, 'head',1);
 	headOptionB = newGame.add.sprite(0,100, 'head', 2);
 	headOptionC = newGame.add.sprite(0,200, 'head', 3);
 	headOptionNull = newGame.add.sprite(0,300, 'head', 0);*/
-	let style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
+	style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
 	let textTitle = newGame.add.text(0, 0, "Build Your Robot", style);
 	let mainInstructionsText = newGame.add.text(0,40, 'Instructions:', style);
 
 // MAKING THE ROBLOX CHARACTER
-	chosenHead = newGame.add.sprite(250,100, 'head', 0);
+	chosenHead = newGame.add.button(250,100, 'head', chooseHead);
 	chosenBody = newGame.add.sprite(0,0, 'body',0).alignTo(chosenHead, Phaser.BOTTOM_CENTER, 0, 10);
-	chosenArm_right = newGame.add.sprite(0,0, 'arm', 0).alignTo(chosenBody, Phaser.LEFT_CENTER, -20,0);
+	chosenArm_right = newGame.add.sprite(0,0, 'arm', 00).alignTo(chosenBody, Phaser.LEFT_CENTER, -10,0);
 	chosenArm_left = newGame.add.sprite(0,0, 'arm', 0).alignTo(chosenBody, Phaser.RIGHT_CENTER, 10, 0);
 	chosenWheel = newGame.add.sprite(0, 0, 'wheel', 0).alignTo(chosenBody, Phaser.BOTTOM_CENTER, 0,10);
 
@@ -41,4 +43,13 @@ subsystemState.prototype.create =function(){
 
 subsystemState.prototype.update = function(){
 
+}
+
+function clearScreen_subsystem(){
+	newGame.world.removeAll();
+}
+
+function chooseHead(){
+	newGame.world.removeAll();
+	let chooseHeadInstructions = newGame.add.text(0,0, 'congrats', style);
 }

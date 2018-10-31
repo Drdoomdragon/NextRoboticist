@@ -40,10 +40,7 @@ problemState.prototype.update = function(){
 // this is the main menu screen.
 function mainScreen (){
     problemDecision = 0;
-    text.destroy();
-    scoreText.destroy();
-    backOption.destroy();
-    selectOption.destroy();
+    newGame.world.removeAll();
 
     text = newGame.add.text(0, 0, "Choose your problem!", style); 
     artButton = newGame.add.button (0, 200, 'artOption', artPicked);
@@ -53,9 +50,8 @@ function mainScreen (){
 
 //this gives the option for player to select challenge or select a new one.
 function displayOptions(){
-    artButton.destroy();
-    playButton.destroy();
-    sportsButton.destroy();
+
+    newGame.world.removeAll();
     backOption = newGame.add.button (0,400, 'backButton', mainScreen);
     selectOption = newGame.add.button (500,400, 'selectButton', selectProblem);
     
