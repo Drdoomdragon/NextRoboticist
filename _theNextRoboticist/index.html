@@ -12,6 +12,7 @@
 	<script type="text/javascript" src = "js/robotIntro.js"></script>
 	<script type="text/javascript" src = "js/theProblem.js"></script>
 	<script type="text/javascript" src = "js/subsystemVideo.js"></script>
+	<script type="text/javascript" src = "js/subsystem.js"></script>
 
 	<style type="text/css">
 		body {
@@ -36,6 +37,7 @@
 	newGame.state.add ("introScene", introState);
 	newGame.state.add ("pickProblem", problemState);
 	newGame.state.add ("playSubVideo", subVideoState);
+	newGame.state.add ("subsystemScene", subsystemState);
 	
 	newGame.state.start("Start");
 </script>
