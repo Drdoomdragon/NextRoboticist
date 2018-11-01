@@ -13,7 +13,7 @@ subsystemState.prototype.preload=function(){
 	newGame.load.image ('invisiBodyButton', 'assets/image/robot_body/bodies/transparent_body.png');
 	newGame.load.image ('invisiWheelButton', 'assets/image/robot_body/wheels/transparent_wheel.png');
 
-	newGame.load.image ('confirmButton', 'assets/image/confirm.png');
+	newGame.load.image ('confirmRobotButton', 'assets/image/confirm.png');
 }
 
 // variables to choose the head
@@ -35,8 +35,7 @@ var robotGroup;
 var mainTextGroup;
 
 //general buttons.
-var confirm; // confirm selection
-
+var confirm;
 
 //final decision variables. these are passed into the robotConfiguration Array.
 var headDecision = 0;
@@ -49,14 +48,17 @@ var wheelDecision = 0;
 var style;
 var textTitle;
 var mainInstructionsText;
+var errorMessage;
 
 subsystemState.prototype.create =function(){
-	style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle" };
+	style = { font: "bold 32px Arial", fill: "#F00", boundsAlignH: "center", boundsAlignV: "middle", wordWrap: true, wordWrapWidth: 450 };
 	
 	mainTextGroup = newGame.add.group();
 
 	textTitle = newGame.add.text(0, 0, "Build Your Robot", style);
 	mainInstructionsText = newGame.add.text(0,40, 'Instructions:', style);
+	errorMessage = newGame.add.text (300,400, 'A robot has not been built! Click on a subsystem to add it to the robot!', style);
+	errorMessage.alpha = 0;
 
 	mainTextGroup.add(textTitle);
 	mainTextGroup.add(mainInstructionsText);
@@ -93,13 +95,23 @@ subsystemState.prototype.create =function(){
 	invisiWheel = newGame.add.button(0,0, 'invisiWheelButton', chooseWheel).alignTo(invisiBody, Phaser.BOTTOM_CENTER, 0,10);
 	invisiWheel.alpha = 0;
 
-//confirm button available in case selection is wanted
-	confirm = newGame.add.button(0,0, 'confirmButton').alignTo(chosenWheel, Phaser.BOTTOM_CENTER, 0, 50);
-
-
+	//confirm button available in case selection is wanted
+	confirm = newGame.add.button(0,0, 'confirmRobotButton', robotDesignConfirm).alignTo(chosenWheel, Phaser.BOTTOM_CENTER, 0, 50);	
+	confirm.alpha = 0;
 }
 
 subsystemState.prototype.update = function(){
+
+}
+
+function robotDesignConfirm (){
+	newGame.world.removeAll();
+	// save robot preferences to robotConfiguration global variable. if 0 = Null
+	robotConfiguration = [headDecision, armRightDecision, armLeftDecision, bodyDecision, wheelDecision];
+
+	//displays configuration values
+	arrayRobotShow = newGame.add.text (50, 300, robotConfiguration, style);
+	
 
 }
 
@@ -108,6 +120,7 @@ function clearScreen_subsystem(){
 	robotGroup.alpha = 0;
 	mainTextGroup.alpha = 0;
 	confirm.alpha = 0;
+	errorMessage.alpha = 0;
 
 	//disabling homescreen buttons.
 	invisiHead.inputEnabled = false;
@@ -121,6 +134,7 @@ function clearScreen_subsystem(){
 }
 
 function showRobotDesignMenu(){
+
 	//making home screen contents reappear
 	robotGroup.alpha = 1;
 	mainTextGroup.alpha = 1;
