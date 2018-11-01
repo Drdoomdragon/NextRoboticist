@@ -109,9 +109,20 @@ function robotDesignConfirm (){
 	// save robot preferences to robotConfiguration global variable. if 0 = Null
 	robotConfiguration = [headDecision, armRightDecision, armLeftDecision, bodyDecision, wheelDecision];
 
+	if (problemDecision = 1){
+		newGame.state.start ("PQ_A");
+	}
+	else if (problemDecision = 2){
+		newGame.state.start ("PQ_B");
+	}
+	else if (problemDecision = 3){
+		newGame.state.start ("PQ_C");
+	}
+
+/*
 	//displays configuration values
 	arrayRobotShow = newGame.add.text (50, 300, robotConfiguration, style);
-	
+*/	
 
 }
 
